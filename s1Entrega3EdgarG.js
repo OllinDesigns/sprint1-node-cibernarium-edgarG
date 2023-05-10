@@ -53,71 +53,56 @@ let salaries = [{
     salary: 2000
 }]; 
 
-const firstPremise = false;
+const booleanProove = false;
 
-const getEmployee = new Promise ((resolve, reject) => {
-    if(!firstPremise) {
-        for (i = 0; i < employees.length; i++) {
-           
-            let findInObjectName = `Nivell 2 - Exercici 1: la id es: ${employees[i].id}, el nombre es ${employees[i].name}`
-            console.log(findInObjectName)
-          }
-        
-        resolve(employees);
+    const employee1 = employees.find(employees => employees.id === 1);
+    const employee2 = employees.find(employees => employees.id === 2);
+    const employee3 = employees.find(employees => employees.id === 3);
 
-    } else {
-        reject(new Error('Este empleado no existe'))
-    }
-    
+const getEmployee = new Promise((resolve, reject) => {
+
+    if (!booleanProove) {
+    const listEmployees = {employee1, employee2, employee3}
+    resolve(listEmployees);  
+} else {
+    reject(new Error(`This employee does not exist`) )
+}
 });
 
 // Nivell 2 - Exercici 2 - Crea una altra arrow function getSalary() similar a l'anterior que rebi com a paràmetre un objecte employee i retorni el seu salari.
 
-const employee1 = employees.find(employees => employees.id === 1);
-const employee2 = employees.find(employees => employees.id === 2);
-const employee3 = employees.find(employees => employees.id === 3);
-
-
-const getSalary = (employee) => {
+const getSalary = (listEmployees) => {
     const salary1 = salaries.find(salaries => salaries.id === 1);
     const salary2 = salaries.find(salaries => salaries.id === 2);
     const salary3 = salaries.find(salaries => salaries.id === 3);
    
-    if (employee == employee1){
-        console.log("Nivel 2 - exercicis 2 i 3: Este es " + employee.name + " " + "y gana " + salary1.salary);
-    } else if (employee == employee2) {
-        console.log(`        
-Nivel 2 exercicis 2 i 3: Este es ${employee.name} y gana ${salary2.salary}
-`);
-    } else if (employee == employee3) {
-        console.log(`Nivel 2 exercicis 2 i 3: Este es ${employee.name} y gana ${salary3.salary}`);
-    } else {
-        console.log(`Por favor ingrese un empleado que se encuentre en el array de objetos`);
-    }
-
     return new Promise( (resolve) => {
-        const employeeSalary = 
-        `Nivell 2 - Exercici 3: The id ${employee1.id} belongs to ${employee1.name} and wins ${salary1.salary}
-        Nivell 2 - Exercici 3: The id ${employee2.id} belongs to ${employee2.name} and wins ${salary2.salary}
-        Nivell 2 - Exercici 3: The id ${employee3.id} belongs to ${employee3.name} and wins ${salary3.salary}`;
+        function employeeSalary(listEmployees){
+            if (listEmployees == employee1){
+                console.log("Este es " + listEmployees.name + " " + "y gana " + salary1.salary);
+            } else if (listEmployees == employee2) {
+                console.log(`Este es ${listEmployees.name} y gana ${salary2.salary}`);
+            } else if (listEmployees == employee3) {
+                console.log(`Este es ${listEmployees.name} y gana ${salary3.salary}`);
+            } else {
+                console.log(`Por favor ingrese un empleado que se encuentre en el array de objetos`);
+            }
+    }
+    employeeSalary(listEmployees);
         resolve(employeeSalary);
-    })
-    
-}
+    })  
+};
 
 // Nivell 2 - Exercici 3 = Invoca la primera funció getEmployee() i després getSalary() niant l'execució de les dues promises de manera que es retorni per la consola el nom de l'empleat/da i el seu salari.
 // llamada a ejercicio 1 y 2 de nivel 2
 
 getEmployee
+    .then(getSalary(employee3))
     .then(getSalary(employee2))
-    .then( res => {
-        console.log('Here the employee names');
-        console.log(res);
-    })
-    .catch( err => {
-        console.log(err.message)
-    });
-
+    .then(getSalary(employee1))
+    .then(res => {
+        console.log('here we return the function getEmployee() ={object listEmployees}')
+        console.log(res)});
     
 // Nivell 3 - Exercici 1 Fixa un element catch a la invocació del nivell anterior que capturi qualsevol error i el mostri per la consola.
 
