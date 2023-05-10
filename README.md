@@ -1,2 +1,2 @@
 # sprint1-node-cibernarium-edgarG
-Repository for exercise delivery
+Intermediate JavaScript: Is about functions! = promises, classes, async-await and more cool stuff
