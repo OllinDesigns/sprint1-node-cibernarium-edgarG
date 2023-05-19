@@ -78,19 +78,27 @@ let getSalary = (employee) => {
 
 // Nivell 1 - Exercici 2 Crea una nova funció asíncrona que cridi a una altra que retorni una Promise que efectuï la seva funció resolve() després de 2 segons de la seva invocació.
 
-async function myAsyncFunction () {
-    const function2 = new Promise ((resolve) => {
-        setTimeout(() => {
-            const message = `Nivell 1 - Exercici 2: esto aparecera 2 segundos despues`;
-            resolve(message);
-        }, 2000);
-        // hacer un reject
-    })
-    const a = await function2;
-    console.log(a)
+async function myAsyncFunction(mymessage) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const message = mymessage;
+      if (message.length === 0) {
+        reject(new Error(`empty message`));
+      } else {
+        resolve(message);
+      }
+    }, 2000);
+  });
 }
 
-myAsyncFunction ();
+myAsyncFunction('Nivell 1 - Exercici 2: esto aparecera 2 segundos despues')
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
 
 // Nivell 2 - Exercici 1: Crea una funció que retorni el doble del número que li passa com a paràmetre després de 2 segons.
 // Crea una altra funció que rebi tres números i calculi la suma dels seus dobles fent servir la funció anterior.
