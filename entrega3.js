@@ -31,6 +31,25 @@ Nivell 1 - Exercici 1: Concert sucessfully booked!`);
         console.log(err.message);
     } );
 
+
+    // n1 e2 Crea una arrow function que rebi un paràmetre i una funció callback i li passi a la funció un missatge o un altre (que s'imprimirà per consola) en funció del paràmetre rebut.
+
+const myArrowFunction = (param, callback) => {
+  if (param === 'mensaje') {
+    callback('Nivel1 Exercici2: este mensaje sale si param es = a mensaje.');
+  } else {
+    callback('Nivel1 Exercici2: este es mi mensaje personalizado');
+  }
+};
+
+// invocar
+const callbackFunction = (output) => {
+  console.log(output);
+};
+
+myArrowFunction('otro', callbackFunction);
+
+
 // Nivell 2 - Exercici 1: Donats els objectes employees i salaries, crea una arrow function getEmployee() que retorni una Promise efectuant la cerca en l'objecte pel seu id.
 // Exercici 2: Crea una altra arrow function getSalary() similar a l'anterior que rebi com a paràmetre un objecte employee i retorni el seu salari.
 // Exercici 3: Invoca la primera funció getEmployee() i després getSalary() niant l'execució de les dues promises de manera que es retorni per la consola el nom de l'empleat/da i el seu salari.
