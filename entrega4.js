@@ -103,34 +103,40 @@ myAsyncFunction('Nivell 1 - Exercici 2: esto aparecera 2 segundos despues')
 // Nivell 2 - Exercici 1: Crea una funció que retorni el doble del número que li passa com a paràmetre després de 2 segons.
 // Crea una altra funció que rebi tres números i calculi la suma dels seus dobles fent servir la funció anterior.
 
-async function mathMaster(a, b, c) {    
-    const multiplier = (d) => {
-        return new Promise((resolve, reject) => {
-            if(isNaN(d)) {
-                reject(new Error(`insert a number`))
-            } else {
-                setTimeout(() => {
-                    resolve(d * 2)
-                }, 2000)
-            }
-        } )
+async function mathMaster(a, b, c) {
+  const multiplier = (d) => {
+    return new Promise((resolve, reject) => {
+      if (isNaN(d)) {
+        reject(new Error(`insert a number`));
+      } else {
+        setTimeout(() => {
+          resolve(d * 2);
+        }, 2000);
+      }
+    });
+  };
+
+  try {
+    if (isNaN(a) || isNaN(b) || isNaN(c)) {
+      throw new Error(`only numbers`);
     }
-try{
-    if (isNaN(a)    ||  isNaN(b)    ||  isNaN(c)){
-        throw new Error(`only numbers`)
-    }
+
     const result1 = await multiplier(a);
     const result2 = await multiplier(b);
     const result3 = await multiplier(c);
 
-    return console.log(`Nivell 2 - Exercici 1, el resultado de la funcion mathMaster is ${result1 + result2 + result3}`)
+    console.log(
+      `Nivell 2 - Exercici 1, the result of the mathMaster function is ${
+        result1 + result2 + result3
+      }`
+    );
+  } catch (error) {
+    console.error(error.message);
+  }
 }
-catch{
-    
-    console.error(error.message)
-}
-}
-mathMaster(200, 1.5, 33);
+
+mathMaster(22, 1.5, 33);
+
 
 
 // Nivell 3 - Exercici 1 Força i captura tants errors com puguis dels nivells 1 i 2.
@@ -140,5 +146,6 @@ setTimeout(() => {
     imprimirEmpleadoPorId('dd');
     imprimirEmpleadoPorId('dw');
     imprimirEmpleadoPorId(true);
+    mathMaster('t', false, 'yeah')
 }, 7000)  
 
