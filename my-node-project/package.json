@@ -1,0 +1,26 @@
+{
+  "name": "test-project",
+  "version": "1.0.0",
+  "description": "a project for testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OllinDesigns/node.test.project.git"
+  },
+  "keywords": [
+    "test",
+    "node.js"
+  ],
+  "author": "edgar",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/OllinDesigns/node.test.project/issues"
+  },
+  "homepage": "https://github.com/OllinDesigns/node.test.project#readme",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}

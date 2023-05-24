@@ -1,0 +1,95 @@
+// Create a mock function for the dirNom method
+const MockDirNom = jest.fn();
+
+// Mock the Persona class
+jest.mock('../app/classPersonanew', () => {
+  return jest.fn().mockImplementation(function (name, age) {
+    this.name = name;
+    this.year = age;
+    this.dirNom = MockDirNom;
+  });
+});
+
+const Persona = require('../app/classPersonanew');
+
+describe('Persona class', () => {
+  // Test the constructor
+  it('should call the constructor with the correct arguments', () => {
+    const name = 'Benicio';
+    const age = 44;
+
+    // Create a new instance using the Persona constructor
+    const myFriend = new Persona(name, age);
+
+    // Verify that the mock constructor was called with the correct arguments
+    expect(Persona).toHaveBeenCalledWith(name, age);
+  });
+
+  // Test the dirNom method
+  it('should call the dirNom method', () => {
+    const myFriend = new Persona('Benicio', 44);
+
+    // Call the dirNom method
+    myFriend.dirNom();
+
+    // Verify that the mock dirNom method was called
+    expect(MockDirNom).toHaveBeenCalled();
+  });
+});
+
+
+
+// const Persona = require('../app/classPersonanew');
+
+
+// // este funciona pero solo con el dir method
+// // Create a mock function for the dirNom method
+// const MockDirNom = jest.fn();
+
+// // Replace the dirNom method of the Persona prototype with the mock function
+// Persona.prototype.dirNom = MockDirNom;
+
+// describe('Persona class', () => {
+//   // Test the constructor
+//   it('should call the constructor with the correct arguments', () => {
+//     const name = 'Benicio';
+//     const age = 44;
+
+//     // Create a new instance using the Persona constructor
+//     const myFriend = new Persona(name, age);
+
+//     // Verify that the mock dirNom method was called
+//     expect(myFriend.dirNom).toHaveBeenCalled();
+//   });
+
+//   // Test the dirNom method
+//   it('should call the dirNom method', () => {
+//     const myFriend = new Persona('Benicio', 44);
+
+//     // Call the dirNom method
+//     myFriend.dirNom();
+
+//     // Verify that the mock dirNom method was called
+//     expect(MockDirNom).toHaveBeenCalled();
+//   });
+// });
+
+
+
+
+// //this works
+// describe('Persona class', () => {
+//   // Test the constructor
+//   it('should create a new Persona object with the correct properties', () => {
+//     const myFriend = new Persona('Benicio', 44);
+//     expect(myFriend.name).toEqual('Benicio');
+//     expect(myFriend.year).toEqual(44);
+//   });
+
+//   // Test the dirNom method
+//   it('should return the name of the Persona object', () => {
+//     const myFriend = new Persona('Benicio', 44);
+//     const name = myFriend.dirNom();
+//     expect(name).toEqual('Benicio');
+//   });
+// });
