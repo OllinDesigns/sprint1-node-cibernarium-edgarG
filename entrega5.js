@@ -1,5 +1,7 @@
 // Edgar Garcia Santos
 
+// IMPORTANTE: ESTA ENTREGA REQUIERE LA CARPETA NODE_MODULES, ESTA SE ENCUENTRA EN EL REPOSITORIO 
+
 
 // Nivell 1 - Exercici 1, Crea una funció que, en executar-la, escrigui una frase en un fitxer.
 
