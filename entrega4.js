@@ -1,4 +1,5 @@
 // Nivell 1 - Exercici 1 Crea una funció asíncrona que rebi un id d'empleat/da i imprimeixi per pantalla el nom de l'empleat/da i el seu salari, usant les funcions getEmployee() i getSalary() que has definit a la tasca anterior.
+
 let employees = [{
     id: 1,
     name: 'Linux Torvalds'
@@ -51,7 +52,7 @@ let getSalary = (employee) => {
 
   getEmployee(3)
   
-  async function imprimirEmpleadoPorId(employeeId) {
+  const imprimirEmpleadoPorId = async (employeeId) => {
     try {
       if (typeof employeeId !== 'number') {
             throw new TypeError('la ID del empleado debe ser un numero');
@@ -138,14 +139,14 @@ async function mathMaster(a, b, c) {
 mathMaster(22, 1.5, 33);
 
 
-
 // Nivell 3 - Exercici 1 Força i captura tants errors com puguis dels nivells 1 i 2.
 
 setTimeout(() => {
+  console.log(`N3 EX 1: lets catch some errors here`)
     imprimirEmpleadoPorId('t');
     imprimirEmpleadoPorId('dd');
     imprimirEmpleadoPorId('dw');
     imprimirEmpleadoPorId(true);
     mathMaster('t', false, 'yeah')
-}, 7000)  
+}, 6100)  
 

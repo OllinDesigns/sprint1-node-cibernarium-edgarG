@@ -3,7 +3,6 @@
 // Nivell 1 - Exercici 1
 // Crea una funció que retorni una Promise que invoqui la funció resolve() o reject() que rep. Invoca-la passant-li les dues funcions de manera que imprimeixin un missatge diferent depenent de si la Promise es resol o no.
 
-// mirar ejercicio2 del nivel 1
 
 const bookedConcert = false; // cambia el valor boolenao para ver los mensajes de las funciones resolve() o reject()
 const concert1 = new Promise((resolve, reject) => {
@@ -13,18 +12,17 @@ const concert1 = new Promise((resolve, reject) => {
             location: 'Electric Ballroom',
             time: '11 p.m.'
         }
-        resolve(concertDetails);
+        resolve(concertDetails); // se resuelve la promesa y se crea el objeto concertDetails
     } else {
         reject(new Error(`Para que aparezca este reject la constante bookedConcert tiene que tener un valor booleano falso`))
     }
 });
 
-// esta es la promise
-
+// invovacion then y catch
 concert1
     .then( res => {
         console.log(` 
-Nivell 1 - Exercici 1: Concert sucessfully booked!`);
+Nivell 1 - Exercici 1: Concert sucessfully booked!, promise resolved succesfully`);
         console.log(res);
     })
     .catch( err => {
@@ -42,9 +40,12 @@ const myArrowFunction = (param, callback) => {
   }
 };
 
-// invocar
+  // invocar
 const callbackFunction = (output) => {
-  console.log(output);
+  setTimeout(() => {
+    console.log(output);
+  }, 20);
+  
 };
 
 myArrowFunction('otro', callbackFunction);
@@ -92,7 +93,7 @@ let getEmployee = (id) => {
           }
           resolve(employee);
         }
-      }, 2000); // operacion asincrona con un delay de 2 segundos
+      }, 30);
     }});
   };
 
@@ -106,7 +107,7 @@ let getSalary = (employee) => {
         } else if (id !== 'number'){
           reject(new Error('El id debe ser un numero'));
         }
-      }, 2000); // operacion asincrona con un delay de 2 segundos
+      }, 50); // operacion asincrona con un delay de 2 segundos
     });
   };
 
@@ -125,12 +126,13 @@ let getSalary = (employee) => {
   .catch((error) => {
     console.log(error);
   });
+
   
- // Nivell 3 - Exercici 1 Fixa un element catch a la invocació del nivell anterior que capturi qualsevol error i el mostri per la consola.
+ // Nivell 3 - Exercici 1: Fixa un element catch a la invocació del nivell anterior que capturi qualsevol error i el mostri per la consola.
 
  setTimeout(() => {
-    console.log(`Nivell 3 - Exercici 1`)  
+    console.log(`Nivell 3 - Exercici 1: this is an error:`)  
     getEmployee('t');
-}, 7000)  
+}, 1000)  
 
 
